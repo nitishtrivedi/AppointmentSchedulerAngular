@@ -1,1 +1,40 @@
-<p>login works!</p>
+<div class="login-ctr">
+    <div class="login-wrapper">
+        <div class="login-title">
+            <h1>Welcome to AppointmentR</h1>
+            <p class="login-desc">Please login below to continue</p>
+        </div>
+        <div class="login-form">
+            <table class="login-tbl">
+                <tr>
+                    <td>
+                        <label for="userId">User ID</label>
+                    </td>
+                    <td>
+                        <input type="text" pInputText [(ngModel)]="userId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Password</label>
+                    </td>
+                    <td>
+                        <input
+                            type="password"
+                            pInputText
+                            [(ngModel)]="password"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p-button
+                            label="Submit"
+                            (onClick)="submitUserLogin()"
+                        ></p-button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

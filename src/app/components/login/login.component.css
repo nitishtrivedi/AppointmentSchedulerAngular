@@ -1,0 +1,37 @@
+.login-ctr {
+    font-family: "Faculty Glyphic", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.login-title {
+    text-align: center;
+}
+.login-wrapper {
+    margin-top: 60px;
+}
+.login-desc {
+    font-size: 20px;
+}
+.login-form {
+    margin-top: 50px;
+}
+.login-tbl {
+    width: 50%;
+    margin: auto;
+}
+.login-tbl td {
+    padding: 10px;
+}
+
+.login-tbl tr:nth-child(1) td:nth-child(odd),
+.login-tbl tr:nth-child(2) td:nth-child(odd) {
+    text-align: end;
+}
+.login-tbl tr:nth-child(1) td:nth-child(even),
+.login-tbl tr:nth-child(2) td:nth-child(even) {
+    padding: 0 0 0 30px;
+}
+.login-tbl tr:nth-child(3) td:nth-child(odd) {
+    text-align: center;
+}
