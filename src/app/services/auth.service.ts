@@ -1,12 +1,22 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    private isAuthenticated = false;
+    private storageKey = 'isAuthenticated';
+    private authSubject = new BehaviorSubject<boolean>(
+        this.getstoredAuthstate()
+    );
+    public authState$ = this.authSubject.asObservable();
 
     constructor() {}
+
+    private getstoredAuthstate(): boolean {
+        const storedAuthState = localStorage.getItem(this.storageKey);
+        return storedAuthState === 'true';
+    }
 
     login(
         usernameInput: string,
@@ -15,17 +25,19 @@ export class AuthService {
         passwordDB: string
     ): boolean {
         if (usernameInput === usernameDB && passwordInput === passwordDB) {
-            this.isAuthenticated = true;
+            localStorage.setItem(this.storageKey, 'true');
+            this.authSubject.next(true);
             return true;
         }
         return false;
     }
 
     logout(): void {
-        this.isAuthenticated = false;
+        localStorage.removeItem(this.storageKey);
+        this.authSubject.next(false);
     }
 
     isLoggedIn(): boolean {
-        return this.isAuthenticated;
+        return this.authSubject.getValue();
     }
 }

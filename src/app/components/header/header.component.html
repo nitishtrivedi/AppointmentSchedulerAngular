@@ -1,3 +1,10 @@
 <div class="header-div">
-    <h3 class="roboto-thin">AppointmentR</h3>
+    <div class="header-layout">
+        <h3 class="roboto-thin">AppointmentR</h3>
+        <p-button
+            label="Logout"
+            *ngIf="isLoggedIn"
+            (onClick)="logoutUser()"
+        ></p-button>
+    </div>
 </div>
