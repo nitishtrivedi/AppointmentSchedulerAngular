@@ -1,0 +1,19 @@
+.login-ctr {
+  font-family: "Faculty Glyphic", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.login-desc {
+  font-size: 20px;
+}
+.login-title {
+  text-align: center;
+}
+.spacer-div {
+  margin: 40px;
+}
+.login-form {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+}

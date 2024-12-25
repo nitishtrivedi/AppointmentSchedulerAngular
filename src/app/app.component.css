@@ -1,0 +1,12 @@
+.wrapper {
+  height: 100vh;
+}
+.header,
+.footer {
+  height: 30px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
