@@ -1,12 +1,19 @@
 <div class="header-div">
   <div class="header-layout">
     <h3 class="roboto-thin">AppointmentR</h3>
-    <button mat-button *ngIf="isAuthenticated" [matMenuTriggerFor]="menu">
-      {{ userFullName }}
+    <button
+      mat-button
+      *ngIf="isAuthenticated"
+      [matMenuTriggerFor]="menu"
+      class="custom-btn-color"
+    >
+      <b>{{ userFullName }}</b>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-button (click)="logoutUser()">Logout</button><br />
-      <button mat-button>Admin Panel</button>
+      <button mat-button (click)="logoutUser()" class="custom-btn-color">
+        <b>Logout</b></button
+      ><br />
+      <button mat-button class="custom-btn-color"><b>Admin Panel</b></button>
     </mat-menu>
   </div>
 </div>

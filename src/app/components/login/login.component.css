@@ -2,6 +2,15 @@
   font-family: "Faculty Glyphic", serif;
   font-weight: 400;
   font-style: normal;
+  height: 100vh; /* Full viewport height */
+  position: relative; /* For centering with absolute positioning */
+}
+.login-form-wrapper {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the form */
+  width: 80%; /* Optional: Adjust the width of the form container */
 }
 .login-desc {
   font-size: 20px;
@@ -16,4 +25,15 @@
   width: 80%;
   margin: auto;
   margin-top: 20px;
+}
+.label-text {
+  font-size: 20px;
+}
+
+.login-form tr:nth-child(1) td:nth-child(1),
+.login-form tr:nth-child(2) td:nth-child(1) {
+  float: right;
+}
+.input-fields {
+  height: 70px;
 }

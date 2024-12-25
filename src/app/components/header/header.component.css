@@ -4,15 +4,25 @@
   font-weight: 400;
   font-style: normal;
   font-variation-settings: "MORF" 0;
-  font-size: 38px;
+  font-size: 32px;
 }
 .header-div {
   border-bottom: 1px solid #000;
   padding: 5px 0 5px 35px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  background-color: #f4efe2;
 }
 .header-layout {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* MAT UI STYLE CHANGES */
+.custom-btn-color {
+  color: #000 !important;
+  width: 120px;
+}
+.custom-btn-color:hover {
+  border-radius: 0 !important;
 }

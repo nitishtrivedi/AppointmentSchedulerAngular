@@ -1,0 +1,9 @@
+.footer-div {
+  border-top: 1px solid #000;
+  text-align: center;
+}
+.footer-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

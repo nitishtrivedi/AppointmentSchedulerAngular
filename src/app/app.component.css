@@ -1,12 +1,20 @@
 .wrapper {
   height: 100vh;
+  position: relative;
+  background-color: #fbfaf5;
 }
-.header,
-.footer {
+.header {
   height: 30px;
 }
 
 .footer {
   position: absolute;
   bottom: 0;
+  width: 100%;
+  height: 35px;
+  background-color: #f4efe2;
+  /* box-shadow: rgba(0, 0, 0, 0.45) 0px -25px 20px -20px; */
+}
+.container-xl {
+  padding: 0 !important;
 }

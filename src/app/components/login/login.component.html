@@ -1,53 +1,54 @@
 <div class="container text-center login-ctr">
-  <div class="spacer-div"></div>
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
-      <div class="login-title">
-        <h1>Welcome to AppointmentR</h1>
-        <p class="login-desc">Please login below to continue</p>
+  <div class="login-form-wrapper">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="login-title">
+          <h1>Welcome to AppointmentR</h1>
+          <p class="login-desc">Please login below to continue</p>
+        </div>
       </div>
+      <div class="col-2"></div>
     </div>
-    <div class="col-2"></div>
-  </div>
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
-      <table class="login-form">
-        <tr>
-          <td>
-            <label for="userId">User ID</label>
-          </td>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="User ID" [(ngModel)]="userId" />
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="password">Password</label>
-          </td>
-          <td>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Password"
-                [(ngModel)]="password"
-                type="password"
-              />
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <mat-divider></mat-divider>
-            <br />
-            <button mat-stroked-button (click)="submitLogin()">Submit</button>
-          </td>
-        </tr>
-      </table>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <table class="login-form">
+          <tr>
+            <td>
+              <label for="userId" class="label-text">User ID</label>
+            </td>
+            <td>
+              <mat-form-field class="input-fields">
+                <input matInput placeholder="User ID" [(ngModel)]="userId" />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="password" class="label-text">Password</label>
+            </td>
+            <td>
+              <mat-form-field class="input-fields">
+                <input
+                  matInput
+                  placeholder="Password"
+                  [(ngModel)]="password"
+                  type="password"
+                />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <mat-divider></mat-divider>
+              <br />
+              <button mat-stroked-button (click)="submitLogin()">Submit</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-2"></div>
     </div>
-    <div class="col-2"></div>
   </div>
 </div>
