@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   userId: string = '';
   password: string = '';
   users: User[] = [];
+  currentUser: User | undefined;
   userIdDB: string = '';
   passwordDB: string = '';
 
@@ -41,19 +42,25 @@ export class LoginComponent implements OnInit {
     this.getUserDetails();
   }
 
+  //#region User Details Code
   getUserDetails() {
     this.userService.getUsers().subscribe((data) => {
       this.users = data;
-      console.log(this.users);
     });
   }
   validateUID(uid: string): boolean {
     return this.users.some((u) => u.userName == uid);
   }
-
   validatePWD(pwd: string): boolean {
     return this.users.some((u) => u.userPassword == pwd);
   }
+
+  getUserByID(uid: string): User | undefined {
+    return this.users.find((u) => u.userName === uid);
+  }
+
+  //#endregion
+
   submitLogin() {
     var uid = this.userId;
     var pwd = this.password;
@@ -62,15 +69,28 @@ export class LoginComponent implements OnInit {
     var isPWDCorrect = this.validatePWD(pwd);
 
     if (isUidCorrect && isPWDCorrect) {
-      var isAuthenticated = this.authService.login(uid, pwd, uid, pwd);
-      if (isAuthenticated) {
-        this._snackBar.open('', 'Dismiss', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-          panelClass: ['error-snackbar'],
-        });
-        this.router.navigate(['/home']);
+      this.currentUser = this.getUserByID(uid);
+      if (this.currentUser) {
+        var isAuthenticated = this.authService.login(
+          uid,
+          pwd,
+          uid,
+          pwd,
+          this.currentUser.userId
+        );
+        if (isAuthenticated) {
+          this._snackBar.open(
+            `${this.currentUser.userFirstName} ${this.currentUser.userLastName} logged in!`,
+            'Dismiss',
+            {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              panelClass: ['error-snackbar'],
+            }
+          );
+          this.router.navigate(['/home']);
+        }
       }
     } else {
       Swal.fire({
