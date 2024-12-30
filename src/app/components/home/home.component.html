@@ -2,5 +2,16 @@
   <div class="home-title">
     <h2>Welcome {{ userFirstName }},</h2>
   </div>
-  <div class="home-container"></div>
+  <div class="home-container">
+    <h4>Your Scheduled Appointments</h4>
+    <div *ngIf="hasAppointments" class="appt-list-ctr">
+      <app-appointment-list [dataArray]="appointmentIDs"></app-appointment-list>
+    </div>
+    <div *ngIf="!hasAppointments" class="no-appts-div">
+      <p>You have no appointments scheduled</p>
+      <button mat-stroked-button class="mat-stroke-btn">
+        Schedule Appointment
+      </button>
+    </div>
+  </div>
 </div>
