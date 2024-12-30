@@ -35,6 +35,7 @@ export class AuthService {
   ): boolean {
     if (usernameInput === usernameDB && passwordInput === passwordDB) {
       localStorage.setItem(this.storageKey, 'true');
+      this.setCurrentUserId(userId);
       this.authSubject.next(true);
       this.currentUserIdSubject.next(userId);
       return true;
@@ -55,5 +56,6 @@ export class AuthService {
 
   setCurrentUserId(uid: number) {
     localStorage.setItem(this.currentUserIDKey, uid.toString());
+    this.currentUserIdSubject.next(uid);
   }
 }
