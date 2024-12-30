@@ -12,3 +12,22 @@
   width: 80%;
   margin: auto;
 }
+.text-area-mat {
+  width: 250px !important;
+}
+.service-avbl-span {
+  font-weight: bold;
+  color: #fff;
+  padding: 6px 8px;
+  background-color: rgb(7, 142, 7);
+  border: 1px solid rgb(7, 142, 7);
+  border-radius: 10px;
+}
+.service-unavbl-span {
+  font-weight: bold;
+  color: #fff;
+  padding: 6px 8px;
+  background-color: rgb(184, 5, 5);
+  border: 1px solid rgb(184, 5, 5);
+  border-radius: 10px;
+}

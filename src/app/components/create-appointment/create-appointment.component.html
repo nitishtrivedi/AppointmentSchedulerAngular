@@ -25,14 +25,42 @@
         <td>Select a Service:</td>
         <td>
           <mat-form-field>
-            <mat-label>Select a Service</mat-label>
-            <mat-select>
+            <mat-label>Select a Service Category:</mat-label>
+            <mat-select
+              (selectionChange)="checkIfEmpAvailable()"
+              [(ngModel)]="selectedServiceID"
+            >
               @for (service of services; track service) {
               <mat-option [value]="service.serviceId">{{
                 service.serviceName
               }}</mat-option>
               }
             </mat-select>
+          </mat-form-field>
+        </td>
+        <td>Service Availability:</td>
+        <td>
+          <span *ngIf="!isEmpAvailable && !isServiceSelected"
+            >Please select a service first</span
+          >
+          <span
+            *ngIf="isEmpAvailable && isServiceSelected"
+            class="service-avbl-span"
+            >Service Available</span
+          >
+          <span
+            *ngIf="!isEmpAvailable && isServiceSelected"
+            class="service-unavbl-span"
+            >Service Unavailable</span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Add Service Description:</td>
+        <td>
+          <mat-form-field class="text-area-mat">
+            <mat-label>Describe your requirement</mat-label>
+            <textarea matInput placeholder=""></textarea>
           </mat-form-field>
         </td>
       </tr>
