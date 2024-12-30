@@ -1,0 +1,41 @@
+<div class="create-appt-container">
+  <div class="create-appt-header">
+    <h4>Create a New Appointment</h4>
+  </div>
+  <div class="create-appt-form-div">
+    <table class="create-appt-tbl">
+      <tr>
+        <td>Appointment For:</td>
+        <td>{{ userFullname }}</td>
+        <td>Choose a Date:</td>
+        <td>
+          <mat-form-field>
+            <mat-label>Choose</mat-label>
+            <input matInput [matDatepicker]="picker" disabled />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Select a Service:</td>
+        <td>
+          <mat-form-field>
+            <mat-label>Select a Service</mat-label>
+            <mat-select>
+              @for (service of services; track service) {
+              <mat-option [value]="service.serviceId">{{
+                service.serviceName
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

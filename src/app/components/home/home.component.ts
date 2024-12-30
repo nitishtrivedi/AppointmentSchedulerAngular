@@ -5,6 +5,7 @@ import { NgIf } from '@angular/common';
 import { AppointmentListComponent } from '../appointment-list/appointment-list.component';
 import { Appointment } from '../../models/AppointmentModel';
 import { MatButton } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   appointmentIDs: number[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
   ngOnInit(): void {
     this.getCurrentUser();
   }
@@ -47,5 +48,9 @@ export class HomeComponent implements OnInit {
     } else {
       this.userFirstName = '';
     }
+  }
+
+  scheduleAppt() {
+    this.router.navigate(['/create-appointment']);
   }
 }

@@ -1,0 +1,14 @@
+.create-appt-container {
+  margin: 15px 0;
+}
+.create-appt-header {
+  margin: 20px 0;
+  text-align: center;
+}
+.create-appt-header h4 {
+  margin-top: 40px;
+}
+.create-appt-tbl {
+  width: 80%;
+  margin: auto;
+}

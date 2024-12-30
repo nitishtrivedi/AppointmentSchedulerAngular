@@ -9,7 +9,11 @@
     </div>
     <div *ngIf="!hasAppointments" class="no-appts-div">
       <p>You have no appointments scheduled</p>
-      <button mat-stroked-button class="mat-stroke-btn">
+      <button
+        mat-stroked-button
+        class="mat-stroke-btn"
+        (click)="scheduleAppt()"
+      >
         Schedule Appointment
       </button>
     </div>
