@@ -5,12 +5,14 @@
     <div class="create-appt-form-div">
         <table class="create-appt-tbl">
             <tr>
-                <td>Appointment For:</td>
-                <td>{{ userFullname }}</td>
-                <td>Choose a Date:</td>
+                <td colspan="3">
+                    <h5>Appointment For: {{ userFullname }}</h5>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     <mat-form-field>
-                        <mat-label>Choose</mat-label>
+                        <mat-label>Choose a Date</mat-label>
                         <input
                             matInput
                             [matDatepicker]="picker"
@@ -31,11 +33,8 @@
                         ></mat-datepicker>
                     </mat-form-field>
                 </td>
-            </tr>
-            <tr>
-                <td>Select a Service:</td>
                 <td>
-                    <mat-form-field>
+                    <mat-form-field class="service-cat-ddl">
                         <mat-label>Select a Service Category:</mat-label>
                         <mat-select
                             (selectionChange)="checkIfEmpAvailable()"
@@ -49,47 +48,100 @@
                         </mat-select>
                     </mat-form-field>
                 </td>
-                <td>Service Availability:</td>
                 <td>
-                    <span *ngIf="!isEmpAvailable && !isServiceSelected"
-                        >Please select a service first</span
+                    <mat-spinner
+                        *ngIf="loading"
+                        class="spinner-loader"
+                    ></mat-spinner>
+                    <p
+                        *ngIf="
+                            !isAnyEmployeeAvailable &&
+                            !isServiceSelected &&
+                            !loading
+                        "
                     >
-                    <span
+                        <b>Please Select a Service Category</b>
+                    </p>
+                    <p
+                        *ngIf="
+                            !isAnyEmployeeAvailable &&
+                            isServiceSelected &&
+                            !loading
+                        "
+                        class="service-unavbl-span"
+                    >
+                        Service Unavailable
+                    </p>
+                    <p
+                        *ngIf="
+                            isAnyEmployeeAvailable &&
+                            isServiceSelected &&
+                            !loading
+                        "
+                        class="service-avbl-span"
+                    >
+                        Service Available
+                    </p>
+                </td>
+                <!-- <td>
+                    <p *ngIf="!isEmpAvailable && !isServiceSelected">
+                        Select a service to check availablitily
+                    </p>
+                    <p
                         *ngIf="
                             isEmpAvailable &&
                             isServiceSelected &&
                             isAssignedEmployeeAvailableOnSelectedDate
                         "
                         class="service-avbl-span"
-                        >Service Available</span
                     >
-                    <span
+                        Service Available
+                    </p>
+                    <p
                         *ngIf="
                             isEmpAvailable &&
                             isServiceSelected &&
                             !isAssignedEmployeeAvailableOnSelectedDate
                         "
                         class="service-avbl-span"
-                        >Service Available</span
                     >
-                    <span
+                        Service Available
+                    </p>
+                    <p
                         *ngIf="
                             !isEmpAvailable &&
                             !isAssignedEmployeeAvailableOnSelectedDate &&
                             isServiceSelected
                         "
                         class="service-unavbl-span"
-                        >Service Unavailable</span
                     >
-                </td>
+                        Service Unavailable
+                    </p>
+                </td> -->
             </tr>
             <tr>
                 <td>Add Service Description:</td>
-                <td>
+                <td colspan="3">
                     <mat-form-field class="text-area-mat">
                         <mat-label>Describe your requirement</mat-label>
-                        <textarea matInput placeholder=""></textarea>
+                        <textarea
+                            matInput
+                            placeholder=""
+                            [(ngModel)]="serviceDescription"
+                        ></textarea>
                     </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button
+                        mat-raised-button
+                        class="submit-appt-btn"
+                        [disabled]="submitting || !isAnyEmployeeAvailable"
+                        (click)="submitAppointment()"
+                    >
+                        {{ submitting ? "Creating..." : "Create Appointment" }}
+                    </button>
                 </td>
             </tr>
         </table>
